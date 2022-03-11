@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.model.Producto;
 
-@FeignClient(name ="feignVentas", url="http://localhost:8080")
+@FeignClient(value ="feignVentas", url="http://localhost:8080")
 public interface VentaFeign {
 	
-	@GetMapping(path="/producto")
+	@GetMapping("/producto")
 	List<Producto> listar();
 }

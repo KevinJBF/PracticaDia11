@@ -21,7 +21,7 @@ public class VentaController {
 	private VentaFeign feignServ;
 	
 	@ApiOperation(value = "Obtiene todos los prodcutos con feign")
-	@GetMapping(path = "/producto")
+	@GetMapping("/producto")
 	public ResponseEntity<List<Producto>> listarProd()
 	{
 		return new ResponseEntity<>(feignServ.listar(),HttpStatus.OK);
