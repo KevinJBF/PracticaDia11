@@ -18,12 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.Categoria;
 import com.example.demo.services.CategoriaServices;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaController {
 	@Autowired
 	private CategoriaServices service;
 	
+	@ApiOperation(value = "Agregar una categoría", notes = "obtiene la categoría y la inserta en la bd")
 	@PostMapping
 	private ResponseEntity<Categoria> guardar(@RequestBody Categoria c)
 	{
@@ -35,12 +38,16 @@ public class CategoriaController {
 		}
 	}
 	
+	@ApiOperation(value = "Obtener todas las categorías", notes = "En una lista se agregan todos los"
+			+ "registros obtenidos de la consulta para luego ser retornados por el método")
 	@GetMapping
 	private ResponseEntity<List<Categoria>> listarTodo()
 	{
 			return ResponseEntity.ok(service.getAllCategorias());
 	}
 	
+	@ApiOperation(value = "Eliminar una categoria de acuerdo al Id", notes = "se obtiene el id de la categoría que se desea eliminar"
+			+ "y se ejecuta dicha acción")
 	@DeleteMapping
 	private ResponseEntity<Void> eliminarCategoria(@RequestBody Categoria c)
 	{
@@ -48,9 +55,11 @@ public class CategoriaController {
 		return ResponseEntity.ok().build();
 	}
 	
+	@ApiOperation(value = "Obtener una categoria de acuerdo a un", notes = "obtiene una categoría por el id que recibe")
 	@GetMapping("/categorias/{id}")
 	private ResponseEntity<Optional<Categoria>> obtenerCategoria(@PathVariable ("id") Long id)
 	{
 			return ResponseEntity.ok(service.findById(id));
 	}
+	
 }

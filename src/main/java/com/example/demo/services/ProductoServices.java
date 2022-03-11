@@ -33,5 +33,10 @@ public class ProductoServices {
 	{
 		return repositorio.findById(id);
 	}
+	
+	public void actualizar(Producto c)
+	{
+		repositorio.save(c);
+	}
 
 }

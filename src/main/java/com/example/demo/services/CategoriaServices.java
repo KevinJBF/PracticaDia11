@@ -33,4 +33,9 @@ public class CategoriaServices {
 	{
 		return repositorio.findById(id);
 	}
+	
+	public void actualizar(Categoria c)
+	{
+		repositorio.save(c);
+	}
 }
